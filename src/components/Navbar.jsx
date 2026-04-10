@@ -18,18 +18,19 @@ function Navbar() {
 
       <nav className="navbar__nav">
         <Link to="/">Home</Link>
-        <Link to="/about">Sobre mí</Link>
-        <Link to="/services">Servicios</Link>
-        <Link to="/contact">Contacto</Link>
+        <Link to="/about">About</Link>
+        <Link to="/services">Services</Link>
+        <Link to="/contact">Contact</Link>
 
         {!token ? (
           <>
             <Link to="/login">Login</Link>
-            <Link to="/register">Registro</Link>
+            <Link to="/subscribe">Subscribe</Link>
           </>
         ) : (
           <>
-            <Link to="/profile">Perfil</Link>
+            <Link to="/profile">Profile</Link>
+            <Link to="/my-subscription">My Subscription</Link>
             <Link to="/premium">Premium</Link>
             <button type="button" className="logout-button" onClick={handleLogout}>
               Logout

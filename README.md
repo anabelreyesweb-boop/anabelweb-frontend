@@ -1,70 +1,208 @@
-# Getting Started with Create React App
+# Anabel Web Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend of the Anabel Web project, built with React and React Router.
 
-## Available Scripts
+It includes a public area, authentication pages, private user pages, an admin panel for managing premium content, and a subscription flow for premium access.
 
-In the project directory, you can run:
+# Project Overview
 
-### `npm start`
+The frontend is connected to a Node.js + Express backend and a MySQL database.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The application includes:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Public pages
 
-### `npm test`
+* Home
+* About
+* Services
+* Contact
+* Login
+* Register
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Private pages
 
-### `npm run build`
+* Profile
+* My Subscription
+* Premium content list
+* Premium content detail
+* Subscription Plans / Become a Subscriber
+* Checkout
+* Payment Success
+* Payment Failed
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Admin pages
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Premium content list
+* Create premium content
+* Edit premium content
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Tech Stack
 
-### `npm run eject`
+* React
+* React Router
+* JavaScript
+* Sass
+* Fetch API
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Port
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The frontend runs on:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+PORT=3001
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Getting Started
 
-## Learn More
+# 1. Clone the repository
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+git clone https://github.com/anabelreyesweb-boop/anabelweb-frontend
+cd anabelweb-frontend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 2. Install dependencies
 
-### Code Splitting
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# 3. Create the environment file
 
-### Analyzing the Bundle Size
+Create a `.env` file in the root of the frontend project and add:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+PORT=3001
 
-### Making a Progressive Web App
+# 4. Start the development server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+npm start
 
-### Advanced Configuration
+The app will run at:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+http://localhost:3001
 
-### Deployment
+# Backend Connection
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This frontend is designed to work with the backend running at:
 
-### `npm run build` fails to minify
+http://localhost:3000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Make sure the backend server is running before using authenticated or admin features.
+
+# Main Features
+
+# Authentication
+
+* User registration
+* User login
+* JWT token storage in `localStorage`
+* Logout
+* Protected routes for authenticated users
+* Admin-only protected routes
+
+# User Area
+
+* Profile page
+* Subscription status page
+* Premium content list
+* Premium content detail page
+* Subscription plan page
+* Checkout page
+* Payment success page
+* Payment failed page
+
+# Admin Area
+
+Admins can manage premium content through a full CRUD interface:
+
+* View all premium content
+* Create new premium content
+* Edit existing premium content
+* Delete premium content
+
+# Subscription and Payment Flow
+
+The project includes a subscription flow with one premium plan:
+
+* €10/month
+* Access to all premium content while the subscription is active
+
+Payment processing is simulated for educational purposes.
+
+The frontend does not connect to a real bank or payment gateway. Instead, it provides the user interface for a subscription checkout flow that is handled by the backend as a simulated payment process.
+
+# UX Improvements
+
+* Slug auto-generation from title
+* Manual slug editing support
+* Basic form validation
+* Cover image preview
+* Responsive admin table with improved layout
+
+# Project Structure
+
+src/
+components/
+Navbar.jsx
+PrivateRoute.jsx
+AdminRoute.jsx
+layouts/
+MainLayout.jsx
+pages/
+Home.jsx
+About.jsx
+Services.jsx
+Contact.jsx
+Login.jsx
+Register.jsx
+Profile.jsx
+MySubscription.jsx
+Premium.jsx
+PremiumDetail.jsx
+SubscriptionPlans.jsx
+Checkout.jsx
+PaymentSuccess.jsx
+PaymentFailed.jsx
+AdminPremiumList.jsx
+AdminPremiumCreate.jsx
+AdminPremiumEdit.jsx
+services/
+authService.js
+styles/
+main.scss
+
+# Available Scripts
+
+# npm start
+
+Runs the app in development mode.
+
+# npm run build
+
+Builds the app for production.
+
+# npm test
+
+Launches the test runner.
+
+# Access Control
+
+The frontend uses route protection based on authentication and user role:
+
+* `PrivateRoute` protects pages that require login
+* `AdminRoute` protects pages that require admin access
+
+# Notes
+
+* The portfolio section was removed from the project and is no longer part of the frontend.
+* Premium content access is restricted to users with an active subscription.
+* Admin users can access the premium content management panel.
+* The payment flow is simulated as part of the academic scope of the project.
+
+# Future Improvements
+
+Some project tasks are still pending, such as:
+
+* More advanced responsive design
+* Improved visual polish
+* Profile image update
+* Password change feature
+* Final documentation and presentation materials
+
+# Author
+
+Developed as part of a full-stack web project by Anabel Reyes.

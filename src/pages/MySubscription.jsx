@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getProfile, getMySubscription } from '../services/authService';
+import { getMySubscription } from '../services/authService';
 
-function Profile() {
-  const [profile, setProfile] = useState(null);
+function MySubscription() {
   const [subscription, setSubscription] = useState(null);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [subscriptionMessage, setSubscriptionMessage] = useState('');
+  const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(true);
 
   function formatDate(dateString) {
@@ -36,20 +34,11 @@ function Profile() {
   }
 
   useEffect(() => {
-    async function loadProfileData() {
+    async function loadSubscription() {
       const token = localStorage.getItem('token');
 
       if (!token) {
-        setErrorMessage('You are not logged in');
-        setLoading(false);
-        return;
-      }
-
-      try {
-        const profileData = await getProfile(token);
-        setProfile(profileData.user);
-      } catch (error) {
-        setErrorMessage(error.message);
+        setMessage('You are not logged in');
         setLoading(false);
         return;
       }
@@ -58,29 +47,20 @@ function Profile() {
         const subscriptionData = await getMySubscription(token);
         setSubscription(subscriptionData);
       } catch (error) {
-        setSubscriptionMessage('No subscription found');
+        setMessage('No active subscription found');
       } finally {
         setLoading(false);
       }
     }
 
-    loadProfileData();
+    loadSubscription();
   }, []);
 
   if (loading) {
     return (
       <section>
-        <h1>Profile</h1>
-        <p>Loading profile...</p>
-      </section>
-    );
-  }
-
-  if (errorMessage) {
-    return (
-      <section>
-        <h1>Profile</h1>
-        <p className="form-message error">{errorMessage}</p>
+        <h1>My Subscription</h1>
+        <p>Loading subscription...</p>
       </section>
     );
   }
@@ -89,18 +69,11 @@ function Profile() {
 
   return (
     <section>
-      <h1>Profile</h1>
-
-      <div className="profile-card">
-        <h2>User information</h2>
-        <p><strong>ID:</strong> {profile.id}</p>
-        <p><strong>Email:</strong> {profile.email}</p>
-        <p><strong>Role:</strong> {profile.role}</p>
-      </div>
+      <h1>My Subscription</h1>
 
       {subscription && hasActiveSubscription ? (
         <div className="profile-card">
-          <h2>Subscription</h2>
+          <h2>Subscription details</h2>
           <p><strong>Status:</strong> Active</p>
           <p><strong>Start date:</strong> {formatDate(subscription.start_date)}</p>
           <p><strong>End date:</strong> {formatDate(subscription.end_date)}</p>
@@ -108,22 +81,18 @@ function Profile() {
           <p><strong>Auto renewal:</strong> {subscription.auto_renewal ? 'Yes' : 'No'}</p>
 
           <div className="profile-actions">
-            <Link to="/my-subscription" className="secondary-button">
-              My Subscription
-            </Link>
-
             <Link to="/premium" className="primary-button">
-              Go to Premium
+              View Premium Content
             </Link>
           </div>
         </div>
       ) : (
         <div className="profile-card">
-          <h2>Subscription</h2>
+          <h2>No active subscription</h2>
           <p>
             {subscription
               ? 'Your previous subscription has expired.'
-              : subscriptionMessage || 'No subscription found'}
+              : message || 'No active subscription found'}
           </p>
 
           {subscription && (
@@ -138,10 +107,6 @@ function Profile() {
             <Link to="/subscribe" className="primary-button">
               Become a Subscriber
             </Link>
-
-            <Link to="/my-subscription" className="secondary-button">
-              My Subscription
-            </Link>
           </div>
         </div>
       )}
@@ -149,4 +114,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default MySubscription;

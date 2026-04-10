@@ -53,6 +53,7 @@ h1 {
 p {
   line-height: 1.6;
 }
+
 .auth-page {
   max-width: 500px;
   margin: 0 auto;
@@ -95,6 +96,7 @@ p {
 .auth-form button:hover {
   opacity: 0.9;
 }
+
 .form-message {
   font-size: 0.95rem;
   margin-top: 0.25rem;
@@ -107,6 +109,7 @@ p {
 .form-message.success {
   color: #067647;
 }
+
 .premium-grid {
   display: grid;
   gap: 1rem;
@@ -129,6 +132,7 @@ p {
   margin-top: 1rem;
   font-weight: 600;
 }
+
 .premium-detail-card {
   margin-top: 1.5rem;
   padding: 1.5rem;
@@ -141,10 +145,114 @@ p {
   margin-bottom: 1rem;
   line-height: 1.6;
 }
+
 .logout-button {
   background: none;
   border: none;
   cursor: pointer;
   font: inherit;
   padding: 0;
+}
+
+.profile-card {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.profile-card h2 {
+  margin-bottom: 1rem;
+}
+
+.profile-card p {
+  margin-bottom: 0.75rem;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-block;
+  padding: 0.9rem 1.4rem;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.primary-button {
+  background: #111827;
+  color: #fff;
+}
+
+.secondary-button {
+  background: #e5e7eb;
+  color: #111827;
+}
+.subscription-page,
+.checkout-page,
+.payment-result {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.subscription-card,
+.checkout-card {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.subscription-card__price {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+.subscription-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.subscription-card__features li {
+  margin-bottom: 0.75rem;
+}
+
+.checkout-card__row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.checkout-card__row--total {
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+}
+
+.checkout-card__actions,
+.payment-result__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.checkout-message-box {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #f5c2c7;
+  border-radius: 10px;
+  background-color: #fff1f2;
 }
