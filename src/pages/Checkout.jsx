@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { subscribeUser } from '../services/authService';
+import { subscribeUser, loginUser } from '../services/authService';
 
 function Checkout() {
   const navigate = useNavigate();
@@ -58,6 +58,14 @@ function Checkout() {
         subscriptionData.email,
         subscriptionData.password
       );
+
+      const loginData = await loginUser(
+        subscriptionData.email,
+        subscriptionData.password
+      );
+
+      localStorage.setItem('token', loginData.token);
+      localStorage.setItem('user', JSON.stringify(loginData.user));
 
       sessionStorage.removeItem('subscription_form_data');
       navigate('/payment-success');

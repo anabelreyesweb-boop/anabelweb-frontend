@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { loginUser } from '../services/authService';
 
 function Login() {
@@ -75,6 +75,16 @@ function Login() {
             value={formData.password}
             onChange={handleChange}
           />
+        </div>
+
+        <div className="auth-links">
+          <Link to="/forgot-password" className="auth-link">
+            Forgot your password?
+          </Link>
+
+          <Link to="/subscribe" className="auth-link">
+            Need an account? Subscribe here
+          </Link>
         </div>
 
         {errorMessage && <p className="form-message error">{errorMessage}</p>}

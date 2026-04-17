@@ -7,6 +7,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
+import ForgotPassword from './pages/ForgotPassword';
 import Profile from './pages/Profile';
 import MySubscription from './pages/MySubscription';
 import Premium from './pages/Premium';
@@ -30,6 +31,7 @@ function App() {
           <Route path="services" element={<Services />} />
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
+          <Route path="forgot-password" element={<ForgotPassword />} />
           <Route path="subscribe" element={<SubscriptionPlans />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="payment-success" element={<PaymentSuccess />} />

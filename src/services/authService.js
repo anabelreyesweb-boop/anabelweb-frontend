@@ -24,24 +24,6 @@ export async function loginUser(email, password) {
   return data;
 }
 
-export async function registerUser(name, email, password) {
-  const response = await fetch(`${API_URL}/auth/register`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ name, email, password }),
-  });
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || 'Registration failed');
-  }
-
-  return data;
-}
-
 export async function subscribeUser(name, email, password) {
   const response = await fetch(`${API_URL}/subscribe`, {
     method: 'POST',
@@ -55,6 +37,24 @@ export async function subscribeUser(name, email, password) {
 
   if (!response.ok) {
     throw new Error(data.message || 'Subscription failed');
+  }
+
+  return data;
+}
+
+export async function forgotPassword(email) {
+  const response = await fetch(`${API_URL}/auth/forgot-password`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Failed to process forgot password request');
   }
 
   return data;
@@ -89,23 +89,6 @@ export async function getMySubscription(token) {
 
   if (!response.ok) {
     throw new Error(data.message || 'Failed to fetch subscription');
-  }
-
-  return data;
-}
-
-export async function createSubscriptionCheckout(token) {
-  const response = await fetch(`${API_URL}/subscriptions/checkout`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || 'Failed to process subscription checkout');
   }
 
   return data;
