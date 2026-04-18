@@ -13,16 +13,16 @@ function PaymentSuccess() {
         </p>
 
         <div className="payment-result__actions">
-          <Link to="/login" className="primary-button">
-            Go to Login
-          </Link>
-
-          <Link to="/my-subscription" className="secondary-button">
+          <Link to="/my-subscription" className="primary-button">
             My Subscription
           </Link>
 
           <Link to="/premium" className="secondary-button">
             View Premium Content
+          </Link>
+
+          <Link to="/profile" className="secondary-button">
+            Go to Profile
           </Link>
         </div>
       </div>

@@ -31,7 +31,7 @@ function Navbar() {
           <>
             <Link to="/profile">Profile</Link>
             <Link to="/my-subscription">My Subscription</Link>
-            <Link to="/premium">Premium</Link>
+            <Link to="/premium">Premium Content</Link>
             <button type="button" className="logout-button" onClick={handleLogout}>
               Logout
             </button>

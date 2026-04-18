@@ -1,8 +1,8 @@
 # Anabel Web Frontend
 
-This is the frontend of the Anabel Web project, built with React and React Router.
+This is the frontend of the **Anabel Web** project, built with **React** and **React Router**.
 
-It includes a public area, authentication pages, private user pages, an admin panel for managing premium content, and a subscription flow for premium access.
+It includes a public area, authentication pages, a subscription flow, private user pages, and an admin panel for managing premium content.
 
 # Project Overview
 
@@ -17,7 +17,11 @@ The application includes:
 * Services
 * Contact
 * Login
-* Register
+* Subscribe
+* Forgot Password
+* Checkout
+* Payment Success
+* Payment Failed
 
 # Private pages
 
@@ -25,10 +29,6 @@ The application includes:
 * My Subscription
 * Premium content list
 * Premium content detail
-* Subscription Plans / Become a Subscriber
-* Checkout
-* Payment Success
-* Payment Failed
 
 # Admin pages
 
@@ -81,29 +81,49 @@ This frontend is designed to work with the backend running at:
 
 http://localhost:3000
 
-Make sure the backend server is running before using authenticated or admin features.
+Make sure the backend server is running before using authenticated, subscription, or admin features.
 
 # Main Features
 
 # Authentication
 
-* User registration
 * User login
 * JWT token storage in `localStorage`
+* Automatic login after successful subscription
 * Logout
 * Protected routes for authenticated users
 * Admin-only protected routes
+* Forgot password page with simulated recovery flow
+
+# Subscription Flow
+
+The project includes one premium plan:
+
+* **€10/month**
+* Access to all premium content while the subscription is active
+
+The subscription flow works as follows:
+
+1. The user enters their personal details on the **Subscribe** page
+2. The user continues to the **Checkout** page
+3. The user completes a simulated credit card payment
+4. The account is created
+5. The subscription is activated
+6. A simulated confirmation email is sent
+7. The user is automatically logged in
+
+# Payment Simulation
+
+Payment processing is simulated for educational purposes.
+
+The checkout form accepts any card details entered by the user. No real payment gateway, bank, or card processor is used.
 
 # User Area
 
 * Profile page
-* Subscription status page
+* My Subscription page
 * Premium content list
 * Premium content detail page
-* Subscription plan page
-* Checkout page
-* Payment success page
-* Payment failed page
 
 # Admin Area
 
@@ -114,24 +134,15 @@ Admins can manage premium content through a full CRUD interface:
 * Edit existing premium content
 * Delete premium content
 
-# Subscription and Payment Flow
-
-The project includes a subscription flow with one premium plan:
-
-* €10/month
-* Access to all premium content while the subscription is active
-
-Payment processing is simulated for educational purposes.
-
-The frontend does not connect to a real bank or payment gateway. Instead, it provides the user interface for a subscription checkout flow that is handled by the backend as a simulated payment process.
-
 # UX Improvements
 
+* Basic form validation
 * Slug auto-generation from title
 * Manual slug editing support
-* Basic form validation
 * Cover image preview
 * Responsive admin table with improved layout
+* Clear subscription flow with simulated checkout
+* Automatic login after subscription
 
 # Project Structure
 
@@ -148,7 +159,7 @@ About.jsx
 Services.jsx
 Contact.jsx
 Login.jsx
-Register.jsx
+ForgotPassword.jsx
 Profile.jsx
 MySubscription.jsx
 Premium.jsx
@@ -192,6 +203,8 @@ The frontend uses route protection based on authentication and user role:
 * Premium content access is restricted to users with an active subscription.
 * Admin users can access the premium content management panel.
 * The payment flow is simulated as part of the academic scope of the project.
+* The confirmation email is simulated as part of the subscription flow.
+* The old standalone Register flow was removed from the main user journey.
 
 # Future Improvements
 

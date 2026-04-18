@@ -73,7 +73,7 @@ function MySubscription() {
 
       {subscription && hasActiveSubscription ? (
         <div className="profile-card">
-          <h2>Subscription details</h2>
+          <h2>Subscription Details</h2>
           <p><strong>Status:</strong> Active</p>
           <p><strong>Start date:</strong> {formatDate(subscription.start_date)}</p>
           <p><strong>End date:</strong> {formatDate(subscription.end_date)}</p>
@@ -88,7 +88,7 @@ function MySubscription() {
         </div>
       ) : (
         <div className="profile-card">
-          <h2>No active subscription</h2>
+          <h2>No Active Subscription</h2>
           <p>
             {subscription
               ? 'Your previous subscription has expired.'

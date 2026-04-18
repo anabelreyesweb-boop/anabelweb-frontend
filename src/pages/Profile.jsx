@@ -92,7 +92,7 @@ function Profile() {
       <h1>Profile</h1>
 
       <div className="profile-card">
-        <h2>User information</h2>
+        <h2>Personal Information</h2>
         <p><strong>ID:</strong> {profile.id}</p>
         <p><strong>Email:</strong> {profile.email}</p>
         <p><strong>Role:</strong> {profile.role}</p>
@@ -113,7 +113,7 @@ function Profile() {
             </Link>
 
             <Link to="/premium" className="primary-button">
-              Go to Premium
+              View Premium Content
             </Link>
           </div>
         </div>

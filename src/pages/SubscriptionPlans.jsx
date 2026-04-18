@@ -156,7 +156,7 @@ function SubscriptionPlans() {
                 </Link>
 
                 <Link to="/premium" className="primary-button">
-                  Go to Premium
+                  View Premium Content
                 </Link>
               </div>
             </div>
