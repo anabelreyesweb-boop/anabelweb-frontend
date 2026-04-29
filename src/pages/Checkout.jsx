@@ -66,6 +66,7 @@ function Checkout() {
 
       localStorage.setItem('token', loginData.token);
       localStorage.setItem('user', JSON.stringify(loginData.user));
+      window.dispatchEvent(new Event('authChanged'));
 
       sessionStorage.removeItem('subscription_form_data');
       navigate('/payment-success');
