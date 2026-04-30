@@ -65,15 +65,18 @@ function AdminPremiumCreate() {
       errors.cover_image = 'Please enter a valid URL.';
     }
 
-    if (formData.display_order !== '' && Number.isNaN(Number(formData.display_order))) {
+    if (
+      formData.display_order !== '' &&
+      Number.isNaN(Number(formData.display_order))
+    ) {
       errors.display_order = 'Display order must be a number.';
     }
 
     return errors;
   };
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleChange = (event) => {
+    const { name, value, type, checked } = event.target;
 
     setFieldErrors((prev) => ({
       ...prev,
@@ -104,8 +107,8 @@ function AdminPremiumCreate() {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setError('');
 
     const errors = validateForm();
@@ -132,323 +135,188 @@ function AdminPremiumCreate() {
     formData.cover_image.trim() && isValidUrl(formData.cover_image);
 
   return (
-    <section style={pageStyle}>
-      <div style={cardStyle}>
-        <div style={topBarStyle}>
+    <section className="admin-page-custom">
+      <div className="admin-form-page-custom__container">
+        <div className="admin-page-custom__header">
           <div>
-            <h1 style={titleStyle}>Create Premium Content</h1>
-            <p style={subtitleStyle}>
+            <h1>Create Premium Content</h1>
+            <p className="admin-page-custom__intro">
               Add a new premium video or protected resource.
             </p>
           </div>
 
-          <Link to="/admin/premium" style={linkResetStyle}>
-            <button style={secondaryButtonStyle}>← Back to admin list</button>
+          <Link to="/admin/premium" className="secondary-button">
+            Back to Admin List
           </Link>
         </div>
 
-        {error && <div style={errorBoxStyle}>{error}</div>}
-
-        <form onSubmit={handleSubmit} style={formStyle}>
-          <div style={fieldStyle}>
-            <label style={labelStyle}>Title</label>
-            <input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              required
-              style={fieldErrors.title ? inputErrorStyle : inputStyle}
-            />
-            {fieldErrors.title && <p style={fieldErrorTextStyle}>{fieldErrors.title}</p>}
+        {error && (
+          <div className="admin-message admin-message--error">
+            {error}
           </div>
+        )}
 
-          <div style={fieldStyle}>
-            <label style={labelStyle}>Slug</label>
-            <input
-              type="text"
-              name="slug"
-              value={formData.slug}
-              onChange={handleChange}
-              required
-              style={fieldErrors.slug ? inputErrorStyle : inputStyle}
-            />
-            {fieldErrors.slug && <p style={fieldErrorTextStyle}>{fieldErrors.slug}</p>}
-          </div>
-
-          <div style={fieldStyle}>
-            <label style={labelStyle}>Description</label>
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              rows="4"
-              style={textareaStyle}
-            />
-          </div>
-
-          <div style={fieldStyle}>
-            <label style={labelStyle}>Support text</label>
-            <textarea
-              name="support_text"
-              value={formData.support_text}
-              onChange={handleChange}
-              rows="4"
-              style={textareaStyle}
-            />
-          </div>
-
-          <div style={fieldStyle}>
-            <label style={labelStyle}>Video URL</label>
-            <input
-              type="text"
-              name="video_url"
-              value={formData.video_url}
-              onChange={handleChange}
-              required
-              style={fieldErrors.video_url ? inputErrorStyle : inputStyle}
-            />
-            {fieldErrors.video_url && (
-              <p style={fieldErrorTextStyle}>{fieldErrors.video_url}</p>
-            )}
-          </div>
-
-          <div style={fieldStyle}>
-            <label style={labelStyle}>Cover image</label>
-            <input
-              type="text"
-              name="cover_image"
-              value={formData.cover_image}
-              onChange={handleChange}
-              style={fieldErrors.cover_image ? inputErrorStyle : inputStyle}
-            />
-            {fieldErrors.cover_image && (
-              <p style={fieldErrorTextStyle}>{fieldErrors.cover_image}</p>
-            )}
-          </div>
-
-          {showCoverPreview && (
-            <div style={previewBoxStyle}>
-              <p style={previewTitleStyle}>Cover preview</p>
-              <img
-                src={formData.cover_image}
-                alt="Cover preview"
-                style={previewImageStyle}
-              />
-            </div>
-          )}
-
-          <div style={twoColumnsStyle}>
-            <div style={fieldStyle}>
-              <label style={labelStyle}>Topic</label>
+        <div className="admin-form-card">
+          <form className="admin-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="title">Title</label>
               <input
+                id="title"
                 type="text"
-                name="topic"
-                value={formData.topic}
+                name="title"
+                value={formData.title}
                 onChange={handleChange}
-                style={inputStyle}
+                required
+                className={fieldErrors.title ? 'admin-input-error' : ''}
               />
-            </div>
-
-            <div style={fieldStyle}>
-              <label style={labelStyle}>Display order</label>
-              <input
-                type="number"
-                name="display_order"
-                value={formData.display_order}
-                onChange={handleChange}
-                style={fieldErrors.display_order ? inputErrorStyle : inputStyle}
-              />
-              {fieldErrors.display_order && (
-                <p style={fieldErrorTextStyle}>{fieldErrors.display_order}</p>
+              {fieldErrors.title && (
+                <p className="form-message error">{fieldErrors.title}</p>
               )}
             </div>
-          </div>
 
-          <div style={checkboxRowStyle}>
-            <label style={checkboxLabelStyle}>
+            <div className="form-group">
+              <label htmlFor="slug">Slug</label>
               <input
-                type="checkbox"
-                name="published"
-                checked={formData.published}
+                id="slug"
+                type="text"
+                name="slug"
+                value={formData.slug}
                 onChange={handleChange}
+                required
+                className={fieldErrors.slug ? 'admin-input-error' : ''}
               />
-              <span>Published</span>
-            </label>
-          </div>
+              {fieldErrors.slug && (
+                <p className="form-message error">{fieldErrors.slug}</p>
+              )}
+            </div>
 
-          <div style={actionsStyle}>
-            <Link to="/admin/premium" style={linkResetStyle}>
-              <button type="button" style={secondaryButtonStyle}>
+            <div className="form-group">
+              <label htmlFor="description">Description</label>
+              <textarea
+                id="description"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                rows="4"
+                className="admin-textarea"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="support_text">Support text</label>
+              <textarea
+                id="support_text"
+                name="support_text"
+                value={formData.support_text}
+                onChange={handleChange}
+                rows="4"
+                className="admin-textarea"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="video_url">Video URL</label>
+              <input
+                id="video_url"
+                type="text"
+                name="video_url"
+                value={formData.video_url}
+                onChange={handleChange}
+                required
+                className={fieldErrors.video_url ? 'admin-input-error' : ''}
+              />
+              {fieldErrors.video_url && (
+                <p className="form-message error">{fieldErrors.video_url}</p>
+              )}
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="cover_image">Cover image</label>
+              <input
+                id="cover_image"
+                type="text"
+                name="cover_image"
+                value={formData.cover_image}
+                onChange={handleChange}
+                className={fieldErrors.cover_image ? 'admin-input-error' : ''}
+              />
+              {fieldErrors.cover_image && (
+                <p className="form-message error">{fieldErrors.cover_image}</p>
+              )}
+            </div>
+
+            {showCoverPreview && (
+              <div className="admin-preview-box">
+                <p className="admin-preview-box__title">Cover preview</p>
+                <img
+                  src={formData.cover_image}
+                  alt="Cover preview"
+                  className="admin-preview-box__image"
+                />
+              </div>
+            )}
+
+            <div className="admin-form__two-columns">
+              <div className="form-group">
+                <label htmlFor="topic">Topic</label>
+                <input
+                  id="topic"
+                  type="text"
+                  name="topic"
+                  value={formData.topic}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="display_order">Display order</label>
+                <input
+                  id="display_order"
+                  type="number"
+                  name="display_order"
+                  value={formData.display_order}
+                  onChange={handleChange}
+                  className={fieldErrors.display_order ? 'admin-input-error' : ''}
+                />
+                {fieldErrors.display_order && (
+                  <p className="form-message error">
+                    {fieldErrors.display_order}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div className="admin-checkbox-row">
+              <label className="admin-checkbox-label" htmlFor="published">
+                <input
+                  id="published"
+                  type="checkbox"
+                  name="published"
+                  checked={formData.published}
+                  onChange={handleChange}
+                />
+                <span>Published</span>
+              </label>
+            </div>
+
+            <div className="admin-form__actions">
+              <Link to="/admin/premium" className="secondary-button">
                 Cancel
-              </button>
-            </Link>
+              </Link>
 
-            <button type="submit" disabled={loading} style={primaryButtonStyle}>
-              {loading ? 'Creating...' : 'Create content'}
-            </button>
-          </div>
-        </form>
+              <button
+                type="submit"
+                disabled={loading}
+                className="primary-button"
+              >
+                {loading ? 'Creating...' : 'Create Content'}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   );
 }
-
-const pageStyle = {
-  padding: '30px 20px',
-};
-
-const cardStyle = {
-  maxWidth: '900px',
-  margin: '0 auto',
-  backgroundColor: '#ffffff',
-  border: '1px solid #e5e7eb',
-  borderRadius: '16px',
-  padding: '24px',
-  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.06)',
-};
-
-const topBarStyle = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  gap: '20px',
-  flexWrap: 'wrap',
-  marginBottom: '24px',
-};
-
-const titleStyle = {
-  margin: '0 0 8px 0',
-};
-
-const subtitleStyle = {
-  margin: 0,
-  color: '#666',
-};
-
-const formStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '18px',
-};
-
-const twoColumnsStyle = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-  gap: '16px',
-};
-
-const fieldStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-};
-
-const labelStyle = {
-  marginBottom: '8px',
-  fontWeight: '600',
-  color: '#111827',
-};
-
-const inputStyle = {
-  width: '100%',
-  padding: '12px 14px',
-  border: '1px solid #d1d5db',
-  borderRadius: '10px',
-  boxSizing: 'border-box',
-  fontSize: '14px',
-};
-
-const inputErrorStyle = {
-  ...inputStyle,
-  border: '1px solid #dc2626',
-  backgroundColor: '#fef2f2',
-};
-
-const textareaStyle = {
-  width: '100%',
-  padding: '12px 14px',
-  border: '1px solid #d1d5db',
-  borderRadius: '10px',
-  boxSizing: 'border-box',
-  fontSize: '14px',
-  resize: 'vertical',
-};
-
-const previewBoxStyle = {
-  border: '1px solid #e5e7eb',
-  borderRadius: '12px',
-  padding: '14px',
-  backgroundColor: '#f9fafb',
-};
-
-const previewTitleStyle = {
-  margin: '0 0 12px 0',
-  fontWeight: '600',
-};
-
-const previewImageStyle = {
-  width: '100%',
-  maxWidth: '320px',
-  height: 'auto',
-  borderRadius: '10px',
-  display: 'block',
-  border: '1px solid #d1d5db',
-};
-
-const checkboxRowStyle = {
-  paddingTop: '4px',
-};
-
-const checkboxLabelStyle = {
-  display: 'inline-flex',
-  alignItems: 'center',
-  gap: '10px',
-  fontWeight: '500',
-};
-
-const actionsStyle = {
-  display: 'flex',
-  justifyContent: 'flex-end',
-  gap: '12px',
-  flexWrap: 'wrap',
-  marginTop: '8px',
-};
-
-const primaryButtonStyle = {
-  backgroundColor: '#111827',
-  color: '#fff',
-  border: 'none',
-  padding: '10px 16px',
-  borderRadius: '8px',
-  cursor: 'pointer',
-};
-
-const secondaryButtonStyle = {
-  backgroundColor: '#e5e7eb',
-  color: '#111827',
-  border: 'none',
-  padding: '10px 16px',
-  borderRadius: '8px',
-  cursor: 'pointer',
-};
-
-const errorBoxStyle = {
-  backgroundColor: '#fef2f2',
-  color: '#991b1b',
-  border: '1px solid #fecaca',
-  padding: '12px 14px',
-  borderRadius: '10px',
-  marginBottom: '16px',
-};
-
-const fieldErrorTextStyle = {
-  margin: '6px 0 0 0',
-  fontSize: '13px',
-  color: '#b91c1c',
-};
-
-const linkResetStyle = {
-  textDecoration: 'none',
-};
 
 export default AdminPremiumCreate;

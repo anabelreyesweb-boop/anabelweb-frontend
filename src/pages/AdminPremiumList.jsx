@@ -51,9 +51,9 @@ function AdminPremiumList() {
 
   if (loading) {
     return (
-      <section style={pageStyle}>
-        <div style={cardStyle}>
-          <h1 style={titleStyle}>Admin Premium Content</h1>
+      <section className="admin-page-custom">
+        <div className="admin-page-custom__container">
+          <h1>Admin Premium Content</h1>
           <p>Loading admin premium content...</p>
         </div>
       </section>
@@ -61,68 +61,73 @@ function AdminPremiumList() {
   }
 
   return (
-    <section style={pageStyle}>
-      <div style={cardStyle}>
-        <div style={headerRowStyle}>
+    <section className="admin-page-custom">
+      <div className="admin-page-custom__container">
+        <div className="admin-page-custom__header">
           <div>
-            <h1 style={titleStyle}>Admin Premium Content</h1>
-            <p style={subtitleStyle}>
+            <h1>Admin Premium Content</h1>
+            <p className="admin-page-custom__intro">
               Manage premium videos and protected content.
             </p>
           </div>
 
-          <Link to="/admin/premium/new" style={linkResetStyle}>
-            <button style={primaryButtonStyle}>+ New content</button>
+          <Link to="/admin/premium/new" className="primary-button">
+            + New Content
           </Link>
         </div>
 
         {successMessage && (
-          <div style={successBoxStyle}>{successMessage}</div>
+          <div className="admin-message admin-message--success">
+            {successMessage}
+          </div>
         )}
 
-        {error && <div style={errorBoxStyle}>{error}</div>}
+        {error && (
+          <div className="admin-message admin-message--error">
+            {error}
+          </div>
+        )}
 
         {contents.length === 0 ? (
-          <div style={emptyBoxStyle}>
-            <p style={{ margin: 0 }}>No premium content found.</p>
+          <div className="admin-empty-box">
+            <p>No premium content found.</p>
           </div>
         ) : (
-          <div style={tableWrapperStyle}>
-            <table style={tableStyle}>
+          <div className="admin-table-wrapper">
+            <table className="admin-table">
               <thead>
                 <tr>
-                  <th style={tableHeaderStyle}>ID</th>
-                  <th style={tableHeaderStyle}>Title</th>
-                  <th style={tableHeaderStyle}>Slug</th>
-                  <th style={tableHeaderStyle}>Topic</th>
-                  <th style={tableHeaderStyle}>Published</th>
-                  <th style={tableHeaderStyle}>Order</th>
-                  <th style={tableHeaderStyle}>Actions</th>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Slug</th>
+                  <th>Topic</th>
+                  <th>Published</th>
+                  <th>Order</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {contents.map((item) => (
                   <tr key={item.id}>
-                    <td style={tableCellStyle}>{item.id}</td>
-                    <td style={tableCellStyle}>{item.title}</td>
-                    <td style={tableCellStyle}>{item.slug}</td>
-                    <td style={tableCellStyle}>{item.topic || '-'}</td>
-                    <td style={tableCellStyle}>
-                      {item.published ? 'Yes' : 'No'}
-                    </td>
-                    <td style={tableCellStyle}>{item.display_order}</td>
-                    <td style={tableCellStyle}>
-                      <div style={actionsStyle}>
+                    <td>{item.id}</td>
+                    <td>{item.title}</td>
+                    <td>{item.slug}</td>
+                    <td>{item.topic || '-'}</td>
+                    <td>{item.published ? 'Yes' : 'No'}</td>
+                    <td>{item.display_order}</td>
+                    <td>
+                      <div className="admin-table__actions">
                         <Link
                           to={`/admin/premium/edit/${item.id}`}
-                          style={linkResetStyle}
+                          className="secondary-button"
                         >
-                          <button style={secondaryButtonStyle}>Edit</button>
+                          Edit
                         </Link>
 
                         <button
+                          type="button"
                           onClick={() => handleDelete(item.id, item.title)}
-                          style={dangerButtonStyle}
+                          className="admin-danger-button"
                         >
                           Delete
                         </button>
@@ -138,122 +143,5 @@ function AdminPremiumList() {
     </section>
   );
 }
-
-const pageStyle = {
-  padding: '30px 20px',
-};
-
-const cardStyle = {
-  maxWidth: '1100px',
-  margin: '0 auto',
-  backgroundColor: '#ffffff',
-  border: '1px solid #e5e7eb',
-  borderRadius: '16px',
-  padding: '24px',
-  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.06)',
-};
-
-const headerRowStyle = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  gap: '20px',
-  flexWrap: 'wrap',
-  marginBottom: '20px',
-};
-
-const titleStyle = {
-  margin: '0 0 8px 0',
-};
-
-const subtitleStyle = {
-  margin: 0,
-  color: '#666',
-};
-
-const tableWrapperStyle = {
-  overflowX: 'auto',
-};
-
-const tableStyle = {
-  width: '100%',
-  borderCollapse: 'collapse',
-};
-
-const tableHeaderStyle = {
-  textAlign: 'left',
-  padding: '14px 12px',
-  borderBottom: '1px solid #ddd',
-  backgroundColor: '#f8f9fb',
-  fontSize: '14px',
-};
-
-const tableCellStyle = {
-  padding: '14px 12px',
-  borderBottom: '1px solid #eee',
-  verticalAlign: 'top',
-};
-
-const actionsStyle = {
-  display: 'flex',
-  gap: '10px',
-  flexWrap: 'wrap',
-};
-
-const primaryButtonStyle = {
-  backgroundColor: '#111827',
-  color: '#fff',
-  border: 'none',
-  padding: '10px 16px',
-  borderRadius: '8px',
-  cursor: 'pointer',
-};
-
-const secondaryButtonStyle = {
-  backgroundColor: '#e5e7eb',
-  color: '#111827',
-  border: 'none',
-  padding: '8px 14px',
-  borderRadius: '8px',
-  cursor: 'pointer',
-};
-
-const dangerButtonStyle = {
-  backgroundColor: '#dc2626',
-  color: '#fff',
-  border: 'none',
-  padding: '8px 14px',
-  borderRadius: '8px',
-  cursor: 'pointer',
-};
-
-const successBoxStyle = {
-  backgroundColor: '#ecfdf5',
-  color: '#065f46',
-  border: '1px solid #a7f3d0',
-  padding: '12px 14px',
-  borderRadius: '10px',
-  marginBottom: '16px',
-};
-
-const errorBoxStyle = {
-  backgroundColor: '#fef2f2',
-  color: '#991b1b',
-  border: '1px solid #fecaca',
-  padding: '12px 14px',
-  borderRadius: '10px',
-  marginBottom: '16px',
-};
-
-const emptyBoxStyle = {
-  backgroundColor: '#f9fafb',
-  border: '1px dashed #d1d5db',
-  padding: '20px',
-  borderRadius: '12px',
-};
-
-const linkResetStyle = {
-  textDecoration: 'none',
-};
 
 export default AdminPremiumList;
