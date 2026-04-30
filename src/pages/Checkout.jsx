@@ -174,7 +174,8 @@ function Checkout() {
             </div>
 
             <p className="checkout-note">
-              This is a simulated payment form for educational purposes. Any card details entered here will be accepted.
+              This is a simulated payment form for educational purposes. Any card
+              details entered here will be accepted.
             </p>
 
             {errorMessage && (

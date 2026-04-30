@@ -191,129 +191,6 @@ p {
   line-height: 1.6;
 }
 
-.auth-page {
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.form-group label {
-  font-weight: 600;
-}
-
-.form-group input {
-  padding: 0.8rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.auth-form button {
-  padding: 0.9rem 1rem;
-  border: none;
-  border-radius: 8px;
-  background-color: #222;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.auth-form button:hover {
-  opacity: 0.9;
-}
-
-.form-message {
-  font-size: 0.95rem;
-  margin-top: 0.25rem;
-}
-
-.form-message.error {
-  color: #b42318;
-}
-
-.form-message.success {
-  color: #067647;
-}
-
-.premium-grid {
-  display: grid;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.premium-card {
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #fafafa;
-}
-
-.premium-card h2 {
-  margin-bottom: 0.75rem;
-}
-
-.premium-link {
-  display: inline-block;
-  margin-top: 1rem;
-  font-weight: 600;
-}
-
-.premium-detail-card {
-  margin-top: 1.5rem;
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #fafafa;
-}
-
-.premium-detail-card p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.logout-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font: inherit;
-  padding: 0;
-}
-
-.profile-card {
-  margin-top: 1.5rem;
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #fafafa;
-}
-
-.profile-card h2 {
-  margin-bottom: 1rem;
-}
-
-.profile-card p {
-  margin-bottom: 0.75rem;
-}
-
-.profile-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
-}
-
 .primary-button,
 .secondary-button {
   display: inline-block;
@@ -335,26 +212,330 @@ p {
   color: #111827;
 }
 
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+}
+
+.form-group input {
+  padding: 0.9rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.form-message {
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+.form-message.error {
+  color: #b42318;
+}
+
+.form-message.success {
+  color: #067647;
+}
+
+/* AUTH PAGES */
+
+.auth-page {
+  background: #efefef;
+  border-radius: 0;
+  box-shadow: none;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.auth-page__container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+  text-align: center;
+}
+
+.auth-page__intro {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.auth-card {
+  margin-top: 2rem;
+  padding: 2rem 1.5rem;
+  border: 1px solid #dddddd;
+  border-radius: 14px;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-form button {
+  width: 100%;
+}
+
+.auth-form button:hover {
+  opacity: 0.9;
+}
+
+.auth-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.auth-link {
+  font-size: 0.95rem;
+  color: #111827;
+  text-decoration: underline;
+}
+
+/* PROFILE + SUBSCRIPTION SHARED CARDS */
+
+.profile-card {
+  margin-top: 2rem;
+  padding: 2rem 1.5rem;
+  border: 1px solid #dddddd;
+  border-radius: 14px;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.profile-card h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.profile-card p {
+  margin-bottom: 0.75rem;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+/* PROFILE PAGE */
+
+.profile-page-custom {
+  background: #efefef;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.profile-page-custom__container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+  text-align: center;
+}
+
+.profile-page-custom__intro {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* MY SUBSCRIPTION PAGE */
+
+.my-subscription-page-custom {
+  background: #efefef;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.my-subscription-page-custom__container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+  text-align: center;
+}
+
+.my-subscription-page-custom__intro {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* PREMIUM PAGE */
+
+.premium-page-custom {
+  background: #efefef;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.premium-page-custom__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+  text-align: center;
+}
+
+.premium-page-custom__intro {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.premium-page-custom__empty {
+  margin-top: 2rem;
+  padding: 2rem 1.5rem;
+  border: 1px solid #dddddd;
+  border-radius: 14px;
+  background-color: #ffffff;
+}
+
+.premium-detail-page-custom {
+  background: #efefef;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.premium-detail-page-custom__container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+  text-align: center;
+}
+
+.premium-detail-page-custom__intro {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.premium-detail-card {
+  margin-top: 2rem;
+  padding: 2rem 1.5rem;
+  border: 1px solid #dddddd;
+  border-radius: 14px;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.premium-detail-card p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.premium-detail-card p:last-child {
+  margin-bottom: 0;
+}
+
+.premium-detail-card a {
+  text-decoration: underline;
+  word-break: break-word;
+}
+
+.premium-detail-page-custom__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.premium-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.premium-card {
+  padding: 2rem 1.5rem;
+  border: 1px solid #dddddd;
+  border-radius: 14px;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.premium-card h2 {
+  margin-bottom: 1rem;
+}
+
+.premium-card p {
+  margin-bottom: 1.25rem;
+}
+
+.premium-link {
+  display: inline-block;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* SUBSCRIBE / CHECKOUT / PAYMENT */
+
 .subscription-page,
 .checkout-page,
 .payment-result {
+  background: #efefef;
+  border-radius: 0;
+  box-shadow: none;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.subscription-page__container,
+.checkout-page__container,
+.payment-result__container {
   max-width: 800px;
   margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+  text-align: center;
+}
+
+.subscription-page__intro,
+.checkout-page__intro,
+.payment-result__intro {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
 .subscription-card,
-.checkout-card {
-  margin-top: 1.5rem;
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #fafafa;
+.checkout-card,
+.payment-result__card {
+  margin-top: 2rem;
+  padding: 2rem 1.5rem;
+  border: 1px solid #dddddd;
+  border-radius: 14px;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.subscription-card h2,
+.checkout-card h2 {
+  text-align: center;
 }
 
 .subscription-card__price {
   font-size: 2rem;
   font-weight: 700;
   margin: 1rem 0;
+  text-align: center;
 }
 
 .subscription-card__features {
@@ -396,16 +577,23 @@ p {
   background-color: #fff1f2;
 }
 
-.auth-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.checkout-card h2 {
+  margin-bottom: 1.5rem;
 }
 
-.auth-link {
+.checkout-note {
+  margin-top: 0.5rem;
   font-size: 0.95rem;
-  color: #111827;
-  text-decoration: underline;
+  line-height: 1.7;
+  color: #222;
+}
+
+.payment-result__card p {
+  margin-bottom: 1rem;
+}
+
+.payment-result__card p:last-of-type {
+  margin-bottom: 0;
 }
 
 /* HOME */
@@ -875,6 +1063,36 @@ p {
     padding: 1.1rem 2.2rem;
   }
 
+  .auth-page__container {
+    padding: 4rem 2rem 5rem;
+  }
+
+  .auth-page__intro {
+    font-size: 1.2rem;
+  }
+
+  .auth-card {
+    padding: 2.25rem 2rem;
+  }
+
+  .subscription-page__container,
+  .checkout-page__container,
+  .payment-result__container {
+    padding: 4rem 2rem 5rem;
+  }
+
+  .subscription-page__intro,
+  .checkout-page__intro,
+  .payment-result__intro {
+    font-size: 1.2rem;
+  }
+
+  .subscription-card,
+  .checkout-card,
+  .payment-result__card {
+    padding: 2.25rem 2rem;
+  }
+
   .about-page-custom__content {
     padding: 1rem 2rem 5rem;
   }
@@ -940,6 +1158,42 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .profile-page-custom__container {
+    padding: 4rem 2rem 5rem;
+  }
+
+  .profile-page-custom__intro {
+    font-size: 1.2rem;
+  }
+
+  .profile-card {
+    padding: 2.25rem 2rem;
+  }
+
+  .my-subscription-page-custom__container {
+    padding: 4rem 2rem 5rem;
+  }
+
+  .my-subscription-page-custom__intro {
+    font-size: 1.2rem;
+  }
+
+  .premium-page-custom__container {
+    padding: 4rem 2rem 5rem;
+  }
+
+  .premium-page-custom__intro {
+    font-size: 1.2rem;
+  }
+
+  .premium-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .premium-card {
+    padding: 2.25rem 2rem;
+  }
+
   .site-footer__grid {
     grid-template-columns: 1fr 1fr auto;
   }
@@ -951,6 +1205,19 @@ p {
   .site-footer__logo {
     width: 220px;
   }
+
+  .premium-detail-page-custom__container {
+    padding: 4rem 2rem 5rem;
+  }
+
+  .premium-detail-page-custom__intro {
+    font-size: 1.2rem;
+  }
+
+  .premium-detail-card {
+    padding: 2.25rem 2rem;
+  }
+
 }
 
 @media (min-width: 1100px) {
@@ -960,5 +1227,9 @@ p {
 
   .services-page-custom__courses-grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .premium-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

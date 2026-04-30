@@ -4,26 +4,34 @@ function PaymentSuccess() {
   return (
     <section className="payment-result payment-result--success">
       <div className="payment-result__container">
-        <h1>Subscription Successful</h1>
-        <p>
-          Your account has been created successfully and your premium subscription is now active.
-        </p>
-        <p>
-          A confirmation email has been sent as part of this simulated educational payment flow.
+        <h1>Payment Successful</h1>
+
+        <p className="payment-result__intro">
+          Your premium subscription has been activated successfully.
         </p>
 
-        <div className="payment-result__actions">
-          <Link to="/my-subscription" className="primary-button">
-            My Subscription
-          </Link>
+        <div className="payment-result__card">
+          <p>
+            Thank you for subscribing. You now have access to all premium
+            content available on the platform while your subscription remains
+            active.
+          </p>
 
-          <Link to="/premium" className="secondary-button">
-            View Premium Content
-          </Link>
+          <p>
+            You are already logged in, so you can go directly to your account,
+            review your subscription details, or start exploring the premium
+            content.
+          </p>
 
-          <Link to="/profile" className="secondary-button">
-            Go to Profile
-          </Link>
+          <div className="payment-result__actions">
+            <Link to="/my-subscription" className="secondary-button">
+              My Subscription
+            </Link>
+
+            <Link to="/premium" className="primary-button">
+              View Premium Content
+            </Link>
+          </div>
         </div>
       </div>
     </section>

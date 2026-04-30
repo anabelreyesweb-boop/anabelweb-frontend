@@ -58,9 +58,11 @@ function MySubscription() {
 
   if (loading) {
     return (
-      <section>
-        <h1>My Subscription</h1>
-        <p>Loading subscription...</p>
+      <section className="my-subscription-page-custom">
+        <div className="my-subscription-page-custom__container">
+          <h1>My Subscription</h1>
+          <p>Loading subscription...</p>
+        </div>
       </section>
     );
   }
@@ -68,48 +70,53 @@ function MySubscription() {
   const hasActiveSubscription = isSubscriptionActive(subscription);
 
   return (
-    <section>
-      <h1>My Subscription</h1>
+    <section className="my-subscription-page-custom">
+      <div className="my-subscription-page-custom__container">
+        <h1>My Subscription</h1>
+        <p className="my-subscription-page-custom__intro">
+          Review your subscription status and access your premium content from here.
+        </p>
 
-      {subscription && hasActiveSubscription ? (
-        <div className="profile-card">
-          <h2>Subscription Details</h2>
-          <p><strong>Status:</strong> Active</p>
-          <p><strong>Start date:</strong> {formatDate(subscription.start_date)}</p>
-          <p><strong>End date:</strong> {formatDate(subscription.end_date)}</p>
-          <p><strong>Price:</strong> {subscription.monthly_price} {subscription.currency}</p>
-          <p><strong>Auto renewal:</strong> {subscription.auto_renewal ? 'Yes' : 'No'}</p>
+        {subscription && hasActiveSubscription ? (
+          <div className="profile-card">
+            <h2>Subscription Details</h2>
+            <p><strong>Status:</strong> Active</p>
+            <p><strong>Start date:</strong> {formatDate(subscription.start_date)}</p>
+            <p><strong>End date:</strong> {formatDate(subscription.end_date)}</p>
+            <p><strong>Price:</strong> {subscription.monthly_price} {subscription.currency}</p>
+            <p><strong>Auto renewal:</strong> {subscription.auto_renewal ? 'Yes' : 'No'}</p>
 
-          <div className="profile-actions">
-            <Link to="/premium" className="primary-button">
-              View Premium Content
-            </Link>
+            <div className="profile-actions">
+              <Link to="/premium" className="primary-button">
+                View Premium Content
+              </Link>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="profile-card">
-          <h2>No Active Subscription</h2>
-          <p>
-            {subscription
-              ? 'Your previous subscription has expired.'
-              : message || 'No active subscription found'}
-          </p>
+        ) : (
+          <div className="profile-card">
+            <h2>No Active Subscription</h2>
+            <p>
+              {subscription
+                ? 'Your previous subscription has expired.'
+                : message || 'No active subscription found'}
+            </p>
 
-          {subscription && (
-            <>
-              <p><strong>Previous status:</strong> {subscription.status}</p>
-              <p><strong>Start date:</strong> {formatDate(subscription.start_date)}</p>
-              <p><strong>End date:</strong> {formatDate(subscription.end_date)}</p>
-            </>
-          )}
+            {subscription && (
+              <>
+                <p><strong>Previous status:</strong> {subscription.status}</p>
+                <p><strong>Start date:</strong> {formatDate(subscription.start_date)}</p>
+                <p><strong>End date:</strong> {formatDate(subscription.end_date)}</p>
+              </>
+            )}
 
-          <div className="profile-actions">
-            <Link to="/subscribe" className="primary-button">
-              Become a Subscriber
-            </Link>
+            <div className="profile-actions">
+              <Link to="/subscribe" className="primary-button">
+                Become a Subscriber
+              </Link>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </section>
   );
 }

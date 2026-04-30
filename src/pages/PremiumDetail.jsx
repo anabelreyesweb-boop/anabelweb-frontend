@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getPremiumContentBySlug } from '../services/authService';
 
 function PremiumDetail() {
@@ -34,29 +34,73 @@ function PremiumDetail() {
 
   if (loading) {
     return (
-      <section>
-        <h1>Detalle Premium</h1>
-        <p>Loading premium content...</p>
+      <section className="premium-detail-page-custom">
+        <div className="premium-detail-page-custom__container">
+          <h1>Premium Content Detail</h1>
+          <p>Loading premium content...</p>
+        </div>
       </section>
     );
   }
 
   if (errorMessage) {
     return (
-      <section>
-        <h1>Detalle Premium</h1>
-        <p className="form-message error">{errorMessage}</p>
+      <section className="premium-detail-page-custom">
+        <div className="premium-detail-page-custom__container">
+          <h1>Premium Content Detail</h1>
+          <p className="form-message error">{errorMessage}</p>
+        </div>
       </section>
     );
   }
 
   return (
-    <section>
-      <h1>{item.title}</h1>
-      <div className="premium-detail-card">
-        <p><strong>Slug:</strong> {item.slug}</p>
-        {item.excerpt && <p><strong>Excerpt:</strong> {item.excerpt}</p>}
-        {item.content && <p><strong>Content:</strong> {item.content}</p>}
+    <section className="premium-detail-page-custom">
+      <div className="premium-detail-page-custom__container">
+        <h1>{item.title}</h1>
+        <p className="premium-detail-page-custom__intro">
+          View the full premium resource and all its details below.
+        </p>
+
+        <div className="premium-detail-card">
+          <p><strong>Slug:</strong> {item.slug}</p>
+
+          {item.description && (
+            <p><strong>Description:</strong> {item.description}</p>
+          )}
+
+          {item.support_text && (
+            <p><strong>Support text:</strong> {item.support_text}</p>
+          )}
+
+          {item.topic && (
+            <p><strong>Topic:</strong> {item.topic}</p>
+          )}
+
+          {item.video_url && (
+            <p>
+              <strong>Video URL:</strong>{' '}
+              <a href={item.video_url} target="_blank" rel="noreferrer">
+                {item.video_url}
+              </a>
+            </p>
+          )}
+
+          {item.cover_image && (
+            <p>
+              <strong>Cover image:</strong>{' '}
+              <a href={item.cover_image} target="_blank" rel="noreferrer">
+                {item.cover_image}
+              </a>
+            </p>
+          )}
+        </div>
+
+        <div className="premium-detail-page-custom__actions">
+          <Link to="/premium" className="secondary-button">
+            Back to Premium Content
+          </Link>
+        </div>
       </div>
     </section>
   );

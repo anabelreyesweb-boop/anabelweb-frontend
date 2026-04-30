@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { forgotPassword } from '../services/authService';
 
 function ForgotPassword() {
@@ -26,31 +27,46 @@ function ForgotPassword() {
 
   return (
     <section className="auth-page">
-      <h1>Forgot Password</h1>
-      <p>
-        Enter your email address and we will send you simulated password reset instructions.
-      </p>
+      <div className="auth-page__container">
+        <h1>Forgot Password</h1>
+        <p className="auth-page__intro">
+          Enter your email address and we will send you simulated password reset
+          instructions.
+        </p>
 
-      <form className="auth-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="forgot-email">Email</label>
-          <input
-            id="forgot-email"
-            name="email"
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
+        <div className="auth-card">
+          <form className="auth-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="forgot-email">Email</label>
+              <input
+                id="forgot-email"
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            </div>
+
+            {errorMessage && <p className="form-message error">{errorMessage}</p>}
+            {successMessage && <p className="form-message success">{successMessage}</p>}
+
+            <button type="submit" className="primary-button" disabled={loading}>
+              {loading ? 'Sending...' : 'Send Reset Instructions'}
+            </button>
+
+            <div className="auth-links">
+              <Link to="/login" className="auth-link">
+                Back to login
+              </Link>
+
+              <Link to="/subscribe" className="auth-link">
+                Need an account? Subscribe here
+              </Link>
+            </div>
+          </form>
         </div>
-
-        {errorMessage && <p className="form-message error">{errorMessage}</p>}
-        {successMessage && <p className="form-message success">{successMessage}</p>}
-
-        <button type="submit" disabled={loading}>
-          {loading ? 'Sending...' : 'Send reset instructions'}
-        </button>
-      </form>
+      </div>
     </section>
   );
 }

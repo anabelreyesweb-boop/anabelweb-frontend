@@ -51,50 +51,57 @@ function Login() {
 
   return (
     <section className="auth-page">
-      <h1>Login</h1>
+      <div className="auth-page__container">
+        <h1>Login</h1>
+        <p className="auth-page__intro">
+          Access your account to manage your subscription and view premium content.
+        </p>
 
-      <form className="auth-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Enter your email"
-            value={formData.email}
-            onChange={handleChange}
-          />
+        <div className="auth-card">
+          <form className="auth-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Enter your password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="auth-links">
+              <Link to="/forgot-password" className="auth-link">
+                Forgot your password?
+              </Link>
+
+              <Link to="/subscribe" className="auth-link">
+                Need an account? Subscribe here
+              </Link>
+            </div>
+
+            {errorMessage && <p className="form-message error">{errorMessage}</p>}
+            {successMessage && <p className="form-message success">{successMessage}</p>}
+
+            <button type="submit" className="primary-button" disabled={loading}>
+              {loading ? 'Loading...' : 'Log in'}
+            </button>
+          </form>
         </div>
-
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Enter your password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="auth-links">
-          <Link to="/forgot-password" className="auth-link">
-            Forgot your password?
-          </Link>
-
-          <Link to="/subscribe" className="auth-link">
-            Need an account? Subscribe here
-          </Link>
-        </div>
-
-        {errorMessage && <p className="form-message error">{errorMessage}</p>}
-        {successMessage && <p className="form-message success">{successMessage}</p>}
-
-        <button type="submit" disabled={loading}>
-          {loading ? 'Loading...' : 'Log in'}
-        </button>
-      </form>
+      </div>
     </section>
   );
 }
