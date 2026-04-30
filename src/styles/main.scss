@@ -352,6 +352,51 @@ p {
   line-height: 1.8;
 }
 
+.profile-photo-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.profile-photo-block__preview {
+  flex-shrink: 0;
+}
+
+.profile-photo-block__image,
+.profile-photo-block__placeholder {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #dddddd;
+  background: #f3f4f6;
+}
+
+.profile-photo-block__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.profile-photo-block__content {
+  width: 100%;
+}
+
+.profile-photo-block__label {
+  display: inline-block;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.profile-card__note {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
 /* MY SUBSCRIPTION PAGE */
 
 .my-subscription-page-custom {
@@ -987,12 +1032,12 @@ p {
 }
 
 .site-footer__column h3 {
-  font-size: 2rem;
+  font-size: 1.35rem;
   margin-bottom: 1rem;
 }
 
 .site-footer__column p {
-  font-size: 1.35rem;
+  font-size: 1rem;
   margin-bottom: 0.75rem;
 }
 
@@ -1008,6 +1053,11 @@ p {
 .site-footer__logo {
   width: 180px;
   height: auto;
+}
+
+.site-footer .page-container {
+  padding-top: 1rem;
+  padding-bottom: 1em;
 }
 
 /* RESPONSIVE */
@@ -1216,6 +1266,15 @@ p {
 
   .premium-detail-card {
     padding: 2.25rem 2rem;
+  }
+
+    .profile-photo-block {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .profile-photo-block__content {
+    flex: 1;
   }
 
 }
