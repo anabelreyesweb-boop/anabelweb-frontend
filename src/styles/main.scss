@@ -540,6 +540,152 @@ p {
   opacity: 0.9;
 }
 
+/* ABOUT PAGE */
+
+.about-page-custom {
+  background: #efefef;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.about-page-custom__hero {
+  background: transparent;
+}
+
+.about-page-custom__image {
+  width: 100%;
+  height: auto;
+}
+
+.about-page-custom__content {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+.about-page-custom__content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.about-page-custom__content h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin: 3rem 0 1.75rem;
+}
+
+.about-page-custom__content p {
+  max-width: 980px;
+  margin: 0 auto 1.2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.about-page-custom__action {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* CONTACT PAGE */
+
+.contact-page-custom {
+  background: #efefef;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.contact-page-custom__hero {
+  background: transparent;
+}
+
+.contact-page-custom__image {
+  width: 100%;
+  height: auto;
+}
+
+.contact-page-custom__content {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+.contact-page-custom__content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.contact-page-custom__content p {
+  max-width: 980px;
+  margin: 0 auto 1.2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.contact-page-custom__info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.contact-page-custom__info-item {
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.contact-page-custom__info-item h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.contact-page-custom__info-item p {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.contact-page-custom__info-item a:hover {
+  opacity: 0.8;
+}
+
+/* LEGAL PAGES */
+
+.legal-page-custom {
+  background: #efefef;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.legal-page-custom__content {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem 1.25rem 4rem;
+}
+
+.legal-page-custom__content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.legal-page-custom__content p {
+  max-width: 980px;
+  margin: 0 auto 1.2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
 /* SERVICES PAGE */
 
 .services-page-custom {
@@ -662,6 +808,10 @@ p {
   margin-bottom: 0.75rem;
 }
 
+.site-footer__column a:hover {
+  opacity: 0.8;
+}
+
 .site-footer__logo-column {
   display: flex;
   justify-content: flex-start;
@@ -723,6 +873,50 @@ p {
   .home-custom__cta-button {
     font-size: 1.8rem;
     padding: 1.1rem 2.2rem;
+  }
+
+  .about-page-custom__content {
+    padding: 1rem 2rem 5rem;
+  }
+
+  .about-page-custom__content h1 {
+    font-size: 2.6rem;
+  }
+
+  .about-page-custom__content h2 {
+    font-size: 2.4rem;
+  }
+
+  .about-page-custom__content p {
+    font-size: 1.2rem;
+  }
+
+  .contact-page-custom__content {
+    padding: 1rem 2rem 5rem;
+  }
+
+  .contact-page-custom__content h1 {
+    font-size: 2.6rem;
+  }
+
+  .contact-page-custom__content p {
+    font-size: 1.2rem;
+  }
+
+  .contact-page-custom__info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .legal-page-custom__content {
+    padding: 3rem 2rem 5rem;
+  }
+
+  .legal-page-custom__content h1 {
+    font-size: 2.6rem;
+  }
+
+  .legal-page-custom__content p {
+    font-size: 1.2rem;
   }
 
   .services-page-custom__content {
