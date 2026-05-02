@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getProfile, getMySubscription } from '../services/authService';
+import {
+  getProfile,
+  getMySubscription,
+  changePassword
+} from '../services/authService';
 
 function Profile() {
   const [profile, setProfile] = useState(null);
@@ -21,6 +25,7 @@ function Profile() {
   });
   const [passwordErrors, setPasswordErrors] = useState({});
   const [passwordMessage, setPasswordMessage] = useState('');
+  const [passwordLoading, setPasswordLoading] = useState(false);
 
   function formatDate(dateString) {
     if (!dateString) return '—';
@@ -99,7 +104,7 @@ function Profile() {
       if (typeof result === 'string') {
         setProfilePhoto(result);
         localStorage.setItem('profilePhoto', result);
-        setPhotoMessage('Profile photo updated successfully (simulated).');
+        setPhotoMessage('Profile photo updated successfully.');
       }
     };
 
@@ -112,6 +117,11 @@ function Profile() {
     setPasswordData((prev) => ({
       ...prev,
       [name]: value,
+    }));
+
+    setPasswordErrors((prev) => ({
+      ...prev,
+      [name]: '',
     }));
   }
 
@@ -137,7 +147,7 @@ function Profile() {
     return newErrors;
   }
 
-  function handlePasswordSubmit(event) {
+  async function handlePasswordSubmit(event) {
     event.preventDefault();
 
     const validationErrors = validatePasswordForm();
@@ -148,15 +158,35 @@ function Profile() {
       return;
     }
 
-    setPasswordMessage(
-      'Password updated successfully (simulated for the educational version).'
-    );
+    const token = localStorage.getItem('token');
 
-    setPasswordData({
-      currentPassword: '',
-      newPassword: '',
-      confirmNewPassword: '',
-    });
+    if (!token) {
+      setPasswordMessage('You are not logged in.');
+      return;
+    }
+
+    try {
+      setPasswordLoading(true);
+
+      const data = await changePassword(
+        token,
+        passwordData.currentPassword,
+        passwordData.newPassword,
+        passwordData.confirmNewPassword
+      );
+
+      setPasswordMessage(data.message);
+
+      setPasswordData({
+        currentPassword: '',
+        newPassword: '',
+        confirmNewPassword: '',
+      });
+    } catch (error) {
+      setPasswordMessage(error.message);
+    } finally {
+      setPasswordLoading(false);
+    }
   }
 
   if (loading) {
@@ -233,10 +263,6 @@ function Profile() {
 
         <div className="profile-card">
           <h2>Change Password</h2>
-          <p className="profile-card__note">
-            This password update is currently simulated for the educational
-            version of the project.
-          </p>
 
           <form className="auth-form" onSubmit={handlePasswordSubmit}>
             <div className="form-group">
@@ -289,11 +315,23 @@ function Profile() {
             </div>
 
             {passwordMessage && (
-              <p className="form-message success">{passwordMessage}</p>
+              <p
+                className={`form-message ${
+                  passwordMessage.toLowerCase().includes('success')
+                    ? 'success'
+                    : 'error'
+                }`}
+              >
+                {passwordMessage}
+              </p>
             )}
 
-            <button type="submit" className="primary-button">
-              Update Password
+            <button
+              type="submit"
+              className="primary-button"
+              disabled={passwordLoading}
+            >
+              {passwordLoading ? 'Updating...' : 'Update Password'}
             </button>
           </form>
         </div>
