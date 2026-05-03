@@ -1,16 +1,20 @@
-# Anabel Web Frontend
+# AURUMPILL Frontend
 
-This is the frontend of the **Anabel Web** project, built with **React** and **React Router**.
+This is the frontend of **AURUMPILL**, a full-stack web application built with **React**, **React Router**, **JavaScript**, and **Sass**.
 
-It includes a public area, authentication pages, a subscription flow, private user pages, and an admin panel for managing premium content.
+The project includes a public website, authentication system, subscription flow, private user area, premium content area, and an admin panel for premium content management.
 
-# Project Overview
+## Version
 
-The frontend is connected to a Node.js + Express backend and a MySQL database.
+1.0.0
 
-The application includes:
+## Project Overview
 
-# Public pages
+AURUMPILL is connected to a **Node.js + Express** backend and a **MySQL** database.
+
+The frontend includes:
+
+### Public Pages
 
 * Home
 * About
@@ -22,21 +26,23 @@ The application includes:
 * Checkout
 * Payment Success
 * Payment Failed
+* Cookies Policy
+* Terms of Use
 
-# Private pages
+### Private Pages
 
 * Profile
 * My Subscription
-* Premium content list
-* Premium content detail
+* Premium Content List
+* Premium Content Detail
 
-# Admin pages
+### Admin Pages
 
-* Premium content list
-* Create premium content
-* Edit premium content
+* Premium Content List
+* Create Premium Content
+* Edit Premium Content
 
-# Tech Stack
+## Tech Stack
 
 * React
 * React Router
@@ -44,48 +50,48 @@ The application includes:
 * Sass
 * Fetch API
 
-# Port
+## Frontend Port
 
 The frontend runs on:
 
 PORT=3001
 
-# Getting Started
+## Getting Started
 
-# 1. Clone the repository
+### 1. Clone the repository
 
-git clone https://github.com/anabelreyesweb-boop/anabelweb-frontend
+git clone https://github.com/anabelreyesweb-boop/anabelweb-frontend.git
 cd anabelweb-frontend
 
-# 2. Install dependencies
+### 2. Install dependencies
 
 npm install
 
-# 3. Create the environment file
+### 3. Create the environment file
 
-Create a `.env` file in the root of the frontend project and add:
+Create a `.env` file in the root of the project and add:
 
 PORT=3001
 
-# 4. Start the development server
+### 4. Start the development server
 
 npm start
 
-The app will run at:
+The application will run at:
 
 http://localhost:3001
 
-# Backend Connection
+## Backend Connection
 
 This frontend is designed to work with the backend running at:
 
 http://localhost:3000
 
-Make sure the backend server is running before using authenticated, subscription, or admin features.
+Make sure the backend server is running before using authentication, subscription, premium, or admin features.
 
-# Main Features
+## Main Features
 
-# Authentication
+### Authentication
 
 * User login
 * JWT token storage in `localStorage`
@@ -93,39 +99,35 @@ Make sure the backend server is running before using authenticated, subscription
 * Logout
 * Protected routes for authenticated users
 * Admin-only protected routes
-* Forgot password page with simulated recovery flow
+* Forgot password flow
 
-# Subscription Flow
+### Subscription Flow
 
-The project includes one premium plan:
+The application includes one premium plan:
 
 * **€10/month**
 * Access to all premium content while the subscription is active
 
-The subscription flow works as follows:
+Flow:
 
-1. The user enters their personal details on the **Subscribe** page
+1. The user enters personal details on the **Subscribe** page
 2. The user continues to the **Checkout** page
-3. The user completes a simulated credit card payment
+3. The user completes a simulated payment
 4. The account is created
 5. The subscription is activated
-6. A simulated confirmation email is sent
+6. A confirmation flow is triggered
 7. The user is automatically logged in
 
-# Payment Simulation
-
-Payment processing is simulated for educational purposes.
-
-The checkout form accepts any card details entered by the user. No real payment gateway, bank, or card processor is used.
-
-# User Area
+### User Area
 
 * Profile page
+* Real profile photo update
+* Real password change
 * My Subscription page
 * Premium content list
 * Premium content detail page
 
-# Admin Area
+### Admin Area
 
 Admins can manage premium content through a full CRUD interface:
 
@@ -134,23 +136,31 @@ Admins can manage premium content through a full CRUD interface:
 * Edit existing premium content
 * Delete premium content
 
-# UX Improvements
+## API Integration
 
-* Basic form validation
-* Slug auto-generation from title
-* Manual slug editing support
-* Cover image preview
-* Responsive admin table with improved layout
-* Clear subscription flow with simulated checkout
-* Automatic login after subscription
+The frontend communicates with the backend through a REST API.
 
-# Project Structure
+Main API areas used by the frontend include:
+
+* Authentication
+* Profile
+* Subscription
+* Premium content
+* Admin premium content management
+
+Base API URL:
+
+http://localhost:3000
+
+## Project Structure
 
 src/
 components/
 Navbar.jsx
+Footer.jsx
 PrivateRoute.jsx
 AdminRoute.jsx
+ScrollToTop.jsx
 layouts/
 MainLayout.jsx
 pages/
@@ -171,51 +181,46 @@ PaymentFailed.jsx
 AdminPremiumList.jsx
 AdminPremiumCreate.jsx
 AdminPremiumEdit.jsx
+CookiesPolicy.jsx
+TermsOfUse.jsx
 services/
 authService.js
 styles/
 main.scss
 
-# Available Scripts
+## Available Scripts
 
-# npm start
+### npm start
 
 Runs the app in development mode.
 
-# npm run build
+### npm run build
 
 Builds the app for production.
 
-# npm test
+### npm test
 
 Launches the test runner.
 
-# Access Control
+## Access Control
 
 The frontend uses route protection based on authentication and user role:
 
 * `PrivateRoute` protects pages that require login
 * `AdminRoute` protects pages that require admin access
 
-# Notes
+## Notes
 
-* The portfolio section was removed from the project and is no longer part of the frontend.
-* Premium content access is restricted to users with an active subscription.
-* Admin users can access the premium content management panel.
-* The payment flow is simulated as part of the academic scope of the project.
-* The confirmation email is simulated as part of the subscription flow.
-* The old standalone Register flow was removed from the main user journey.
+* Premium content access is restricted to users with an active subscription
+* Admin users can also access protected premium content
+* Payment flow is simulated for academic purposes
+* The application is designed as part of a full-stack web development final project
 
-# Future Improvements
+## License
 
-Some project tasks are still pending, such as:
+This project is licensed under the MIT License.
 
-* More advanced responsive design
-* Improved visual polish
-* Profile image update
-* Password change feature
-* Final documentation and presentation materials
+## Author
 
-# Author
-
-Developed as part of a full-stack web project by Anabel Reyes.
+Anabel Reyes
+GitHub: https://github.com/anabelreyesweb-boop
