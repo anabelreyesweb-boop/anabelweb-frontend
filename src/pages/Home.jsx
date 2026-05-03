@@ -18,7 +18,7 @@ function Home() {
 
       <div className="home-custom__intro">
         <div className="page-container">
-          <h1>I help you stand out and generate more leads and sales.</h1>
+          <h1>We help you stand out and generate more leads and sales.</h1>
         </div>
       </div>
 
@@ -32,7 +32,9 @@ function Home() {
                   alt="Web design and development"
                   className="home-custom__service-image"
                 />
-                <h2>Web Design and Development</h2>
+                <span className="home-custom__service-button">
+                  Web Design and Development
+                </span>
               </article>
             </Link>
 
@@ -46,7 +48,9 @@ function Home() {
                   alt="Online courses"
                   className="home-custom__service-image"
                 />
-                <h2>Online courses</h2>
+                <span className="home-custom__service-button">
+                  Online Courses
+                </span>
               </article>
             </Link>
           </div>
@@ -66,7 +70,7 @@ function Home() {
           />
 
           <p className="home-custom__feature-text">
-            My passion is helping my clients solve problems and grow their
+            Our passion is helping our clients solve problems and grow their
             businesses by offering cutting-edge solutions tailored to their
             specific needs.
           </p>
