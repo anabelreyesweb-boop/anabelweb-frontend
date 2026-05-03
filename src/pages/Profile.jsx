@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import {
   getProfile,
   getMySubscription,
-  changePassword
+  changePassword,
+  updateProfilePhoto
 } from '../services/authService';
 
 function Profile() {
@@ -13,10 +14,9 @@ function Profile() {
   const [subscriptionMessage, setSubscriptionMessage] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const [profilePhoto, setProfilePhoto] = useState(
-    localStorage.getItem('profilePhoto') || ''
-  );
+  const [profilePhoto, setProfilePhoto] = useState('');
   const [photoMessage, setPhotoMessage] = useState('');
+  const [photoLoading, setPhotoLoading] = useState(false);
 
   const [passwordData, setPasswordData] = useState({
     currentPassword: '',
@@ -66,6 +66,7 @@ function Profile() {
       try {
         const profileData = await getProfile(token);
         setProfile(profileData.user);
+        setProfilePhoto(profileData.user.profile_photo || '');
       } catch (error) {
         setErrorMessage(error.message);
         setLoading(false);
@@ -85,7 +86,7 @@ function Profile() {
     loadProfileData();
   }, []);
 
-  function handlePhotoChange(event) {
+  async function handlePhotoChange(event) {
     const file = event.target.files?.[0];
     setPhotoMessage('');
 
@@ -98,13 +99,29 @@ function Profile() {
 
     const reader = new FileReader();
 
-    reader.onloadend = () => {
+    reader.onloadend = async () => {
       const result = reader.result;
 
-      if (typeof result === 'string') {
-        setProfilePhoto(result);
-        localStorage.setItem('profilePhoto', result);
-        setPhotoMessage('Profile photo updated successfully.');
+      if (typeof result !== 'string') {
+        return;
+      }
+
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        setPhotoMessage('You are not logged in.');
+        return;
+      }
+
+      try {
+        setPhotoLoading(true);
+        const data = await updateProfilePhoto(token, result);
+        setProfilePhoto(data.profile_photo);
+        setPhotoMessage(data.message);
+      } catch (error) {
+        setPhotoMessage(error.message);
+      } finally {
+        setPhotoLoading(false);
       }
     };
 
@@ -241,6 +258,7 @@ function Profile() {
 
             <div className="profile-photo-block__content">
               <p><strong>ID:</strong> {profile.id}</p>
+              <p><strong>Name:</strong> {profile.name}</p>
               <p><strong>Email:</strong> {profile.email}</p>
               <p><strong>Role:</strong> {profile.role}</p>
 
@@ -252,10 +270,19 @@ function Profile() {
                 type="file"
                 accept="image/*"
                 onChange={handlePhotoChange}
+                disabled={photoLoading}
               />
 
               {photoMessage && (
-                <p className="form-message success">{photoMessage}</p>
+                <p
+                  className={`form-message ${
+                    photoMessage.toLowerCase().includes('success')
+                      ? 'success'
+                      : 'error'
+                  }`}
+                >
+                  {photoMessage}
+                </p>
               )}
             </div>
           </div>

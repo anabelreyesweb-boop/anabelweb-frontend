@@ -68,6 +68,19 @@ export async function changePassword(
   return handleResponse(response);
 }
 
+export async function updateProfilePhoto(token, profilePhoto) {
+  const response = await fetch(`${API_URL}/profile/photo`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ profilePhoto })
+  });
+
+  return handleResponse(response);
+}
+
 export async function getProfile(token) {
   const response = await fetch(`${API_URL}/profile`, {
     headers: {
