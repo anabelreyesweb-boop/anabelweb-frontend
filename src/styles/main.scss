@@ -1467,6 +1467,18 @@ p {
     padding: 2.25rem 2rem;
   }
 
+  .premium-detail-video {
+  margin-top: 1.5rem;
+}
+
+.premium-detail-video__player {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 0.75rem;
+  border-radius: 12px;
+  display: block;
+}
+
   .profile-photo-block {
     flex-direction: row;
     align-items: flex-start;
