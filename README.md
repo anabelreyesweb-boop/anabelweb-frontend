@@ -1,6 +1,6 @@
 # AURUMPILL Frontend
 
-This is the frontend of **AURUMPILL**, a full-stack web application built with **React**, **React Router**, **JavaScript**, and **Sass**.
+This is the frontend of AURUMPILL, a full-stack web application built with React, React Router, JavaScript, and Sass.
 
 The project includes a public website, authentication system, subscription flow, private user area, premium content area, and an admin panel for premium content management.
 
@@ -10,7 +10,7 @@ The project includes a public website, authentication system, subscription flow,
 
 ## Project Overview
 
-AURUMPILL is connected to a **Node.js + Express** backend and a **MySQL** database.
+AURUMPILL is connected to a Node.js + Express backend and a MySQL database.
 
 The frontend includes:
 
@@ -72,6 +72,7 @@ npm install
 Create a `.env` file in the root of the project and add:
 
 PORT=3001
+REACT_APP_API_URL=http://localhost:3000
 
 ### 4. Start the development server
 
@@ -87,6 +88,10 @@ This frontend is designed to work with the backend running at:
 
 http://localhost:3000
 
+If you use the environment variable, make sure it matches the backend URL:
+
+REACT_APP_API_URL=http://localhost:3000
+
 Make sure the backend server is running before using authentication, subscription, premium, or admin features.
 
 ## Main Features
@@ -94,7 +99,7 @@ Make sure the backend server is running before using authentication, subscriptio
 ### Authentication
 
 * User login
-* JWT token storage in `localStorage`
+* JWT token storage in localStorage
 * Automatic login after successful subscription
 * Logout
 * Protected routes for authenticated users
@@ -105,13 +110,13 @@ Make sure the backend server is running before using authentication, subscriptio
 
 The application includes one premium plan:
 
-* **€10/month**
+* €10/month
 * Access to all premium content while the subscription is active
 
 Flow:
 
-1. The user enters personal details on the **Subscribe** page
-2. The user continues to the **Checkout** page
+1. The user enters personal details on the Subscribe page
+2. The user continues to the Checkout page
 3. The user completes a simulated payment
 4. The account is created
 5. The subscription is activated
@@ -152,41 +157,49 @@ Base API URL:
 
 http://localhost:3000
 
+Or through the environment variable:
+
+REACT_APP_API_URL=http://localhost:3000
+
 ## Project Structure
 
 src/
-components/
-Navbar.jsx
-Footer.jsx
-PrivateRoute.jsx
-AdminRoute.jsx
-ScrollToTop.jsx
-layouts/
-MainLayout.jsx
-pages/
-Home.jsx
-About.jsx
-Services.jsx
-Contact.jsx
-Login.jsx
-ForgotPassword.jsx
-Profile.jsx
-MySubscription.jsx
-Premium.jsx
-PremiumDetail.jsx
-SubscriptionPlans.jsx
-Checkout.jsx
-PaymentSuccess.jsx
-PaymentFailed.jsx
-AdminPremiumList.jsx
-AdminPremiumCreate.jsx
-AdminPremiumEdit.jsx
-CookiesPolicy.jsx
-TermsOfUse.jsx
-services/
-authService.js
-styles/
-main.scss
+  components/
+    Navbar.jsx
+    Footer.jsx
+    PrivateRoute.jsx
+    AdminRoute.jsx
+    ScrollToTop.jsx
+
+  layouts/
+    MainLayout.jsx
+
+  pages/
+    Home.jsx
+    About.jsx
+    Services.jsx
+    Contact.jsx
+    Login.jsx
+    ForgotPassword.jsx
+    Profile.jsx
+    MySubscription.jsx
+    Premium.jsx
+    PremiumDetail.jsx
+    SubscriptionPlans.jsx
+    Checkout.jsx
+    PaymentSuccess.jsx
+    PaymentFailed.jsx
+    AdminPremiumList.jsx
+    AdminPremiumCreate.jsx
+    AdminPremiumEdit.jsx
+    CookiesPolicy.jsx
+    TermsOfUse.jsx
+
+  services/
+    authService.js
+
+  styles/
+    main.scss
 
 ## Available Scripts
 
@@ -206,8 +219,8 @@ Launches the test runner.
 
 The frontend uses route protection based on authentication and user role:
 
-* `PrivateRoute` protects pages that require login
-* `AdminRoute` protects pages that require admin access
+* PrivateRoute protects pages that require login
+* AdminRoute protects pages that require admin access
 
 ## Notes
 
@@ -222,5 +235,5 @@ This project is licensed under the MIT License.
 
 ## Author
 
-Anabel Reyes
+Anabel Reyes  
 GitHub: https://github.com/anabelreyesweb-boop
